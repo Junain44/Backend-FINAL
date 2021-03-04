@@ -35,39 +35,40 @@ def register():
 
 @app.route('/add_user/', methods=['POST'])
 def add_user():
-        if request.method == 'POST':
-            msg = None
-            try:
-                post_data = request.get_json()
-                name = post_data['name']
-                email = post_data['email']
-                password = post_data['password']
-                with sqlite3.connect('users.db') as conn:
-                    cursor = conn.cursor()
-                    conn.row_factory = dict_factory()
-                    cursor.execute("INSERT INTO user(name, email, password) VALUES (?, ?, ?)",(name, email, password))
-                    conn.commit()
-                    msg = name + " was added to database "
-            except Exception as e:
-                msg = "Error in insertion " + str(e)
-            finally:
-                return {'msg': msg}
+        try:
+            name = request.form['name']
+            email = request.form['email']
+            password = request.form['password']
+            with sqlite3.connect('users.db') as conn:
+                cursor = conn.cursor()
+                cursor.execute("INSERT INTO user(name, email, password) VALUES (?, ?, ?)",(name, email, password))
+                conn.commit()
+                msg = name + " was added to database "
+        except Exception as e:
+            msg = "Error in insertion " + str(e)
+        finally:
+            conn.close()
+        return jsonify(msg = msg)
+
 
 
 @app.route('/show/', methods=['GET'])
 def show_user():
+    users = []
+    msg = None
     try:
         with sqlite3.connect('users.db') as connect:
             connect.row_factory = dict_factory
             cursor = connect.cursor()
-            cursor.execute('SELECT * FROM user')
-            rows= cursor.fetchall()
+            cursor.execute("SELECT * FROM user")
+            users= cursor.fetchall()
     except Exception as e:
-
+        connect.rollback()
         print("There was an error fetching results from the database: " + str(e))
     finally:
         connect.close()
-        return jsonify(rows)
+    return jsonify(users)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
