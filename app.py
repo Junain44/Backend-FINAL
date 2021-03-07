@@ -50,13 +50,13 @@ def add_user():
         password = request.form['password']
         with sqlite3.connect('users.db') as conn:
             cursor = conn.cursor()
-            cursor.execute("INSERT INTO user(name, email, password) VALUES (?, ?, ?,)", (name, email, password))
+            cursor.execute('INSERT INTO user(name, email, password) VALUES (?, ?, ?)', (name, email, password))
             conn.commit()
-            msg = name + " was added to database "
+            msg = name + "was added to database"
     except Exception as e:
-        msg = "Error in insertion " + str(e)
+        msg = "Error in insertion" + str(e)
     finally:
-        conn.close()
+         conn.close()
     return jsonify(msg=msg)
 
 
