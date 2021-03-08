@@ -12,8 +12,8 @@ def init_sqlite_db():
     conn.execute('CREATE TABLE IF NOT EXISTS user(name TEXT, email TEXT, password TEXT)')
     print("Table created successfully")
 
-    # conn.execute('CREATE TABLE IF NOT EXISTS products(name TEXT, description TEXT, price TEXT, image TEXT)')
-    # print("Product table created successfully")
+    conn.execute('CREATE TABLE IF NOT EXISTS products(name TEXT, description TEXT, price TEXT, image TEXT)')
+    print("Product table created successfully")
 
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM user")
@@ -84,42 +84,52 @@ def show_user():
 #         cursor = conn.cursor()
 #         conn.row_factory = dict_factory
 #
-#         # Adding the jeans
-#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL MEN JEAN', 'R845.95', 'https://i.postimg.cc/dtm8tzyx/jean1.jpg'))
-#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'SLIM FIT JEANS', 'R539.00', 'https://i.postimg.cc/527tN3Nz/jean2.jpg'))
-#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'SLIM GRUNGE WORN', 'R479.00', 'https://i.postimg.cc/ht7Yf4K0/jean3.jpg'))
-#
 #         # Adding the T-shirts
-#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL MENS BLACK T-SHIRT', 'R350.00', 'https://i.postimg.cc/xCLXTnVX/Tshirt1.jpg'))
-#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL MENS BLUE T-SHIRT', 'R500.00', 'https://i.postimg.cc/wTH3k7SM/Tshirt2.jpg'))
-#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL MENS GREY T-SHIRT', 'R250.00', 'https://i.postimg.cc/3Rnfbyth/Tshirt3.jpg'))
-#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL MENS ORANGE T-SHIRT', 'R150.00', 'https://i.postimg.cc/HxXXVF7h/Tshirt4.png'))
+#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL MENS RED T-SHIRT', 'R350.00', 'https://i.postimg.cc/v8WhgTbL/shirt1.jpg'))
+#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL MENS WHITE T-SHIRT', 'R150.00', 'https://i.postimg.cc/MTm1KsQk/shirt2.jpg'))
+#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL MENS WHITE T-SHIRT', 'R250.00', 'https://i.postimg.cc/gJtkD89X/shirt3.jpg'))
+#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL MENS WHITE T-SHIRT', 'R450.00', 'https://i.postimg.cc/XvR07L0g/shirt4.jpg'))
+#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL MENS BLACK T-SHIRT', 'R650.00', 'https://i.postimg.cc/G2F631Kc/shirt5.jpg'))
+#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL MENS BLACK T-SHIRT', 'R250.00', 'https://i.postimg.cc/bNBVhJPx/shirt6.jpg'))
+#
+#         # Adding the jeans
+#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL MENS BLACK JEANS', 'R350.00', 'https://i.postimg.cc/jqzJTkrZ/jean1.jpg'))
+#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL MENS BLACK JEANS', 'R500.00', 'https://i.postimg.cc/mrzt5mw3/jean2.jpg'))
+#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL MENS GREY JEANS', 'R250.00', 'https://i.postimg.cc/02Vj5TXd/jean3.jpg'))
+#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL MENS GREY JEANS', 'R150.00', 'https://i.postimg.cc/VNDDKLK0/jean4.jpg'))
+#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL MENS BLUE JEANS', 'R150.00', 'https://i.postimg.cc/XqQ5bpy9/jean5.jpg'))
+#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL MENS BLUE JEANS', 'R150.00', 'https://i.postimg.cc/52ZCbcjK/jean6.jpg'))
+#
 #
 #         # Adding the shoes
-#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL BROWN SNEAKER', 'R1,999.95', 'https://i.postimg.cc/FRm8fVJh/shoe1.jpg'))
-#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL BLACK SNEAKER', 'R2,999.95', 'https://i.postimg.cc/G2d3cYLy/shoe2.jpg'))
-#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL BLACK CHUCKS', 'R999.95', 'https://i.postimg.cc/y8DyP3zc/shoe3.png'))
-#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL WHITE CHUCKS', 'R899.95', 'https://i.postimg.cc/wjYjWnC2/shoe4.jpg'))
+#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL BLACK SNEAKER', 'R1,999.95', 'https://i.postimg.cc/bYW86q55/shoe1.jpg'))
+#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL BLACK SNEAKER', 'R2,999.95', 'https://i.postimg.cc/xd6VLQHt/shoe2.jpg'))
+#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL BLACK SUPERGA', 'R999.95', 'https://i.postimg.cc/Kz4SNWDF/shoe3.jpg'))
+#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL BLACK UZZI', 'R899.95', 'https://i.postimg.cc/CxYKNFBg/shoe4.jpg'))
+#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL WHITE ADIDAS', 'R659.95', 'https://i.postimg.cc/ryrF2d5T/shoe5.jpg'))
+#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL BLACK SUPERGA', 'R799.95', 'https://i.postimg.cc/jdRV3CXZ/shoe6.jpg'))
+#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL BLACK SUPERGA', 'R399.95', 'https://i.postimg.cc/NFj6LWmh/shoe7.jpg'))
+#         cursor.execute("INSERT INTO products(name, description, price, image) VALUES (?, ?, ?, ?)", ('ADIDAS', 'ORIGINAL BLACK SUPERGA', 'R499.95', 'https://i.postimg.cc/dtDRFcJr/shoe8.jpg'))
 #         conn.commit()
 #
 # add_products()
-#
-#
-# @app.route('/show_products/', methods=['GET'])
-# def show_products():
-#     msg = None
-#     try:
-#         with sqlite3.connect('users.db') as connect:
-#             connect.row_factory = dict_factory
-#             cursor = connect.cursor()
-#             cursor.execute("SELECT * FROM products")
-#             users = cursor.fetchall()
-#     except Exception as e:
-#         connect.rollback()
-#         print("There was an error fetching results from the database: " + str(e))
-#     finally:
-#         connect.close()
-#     return jsonify(users)
+
+
+@app.route('/show_products/', methods=['GET'])
+def show_products():
+    msg = None
+    try:
+        with sqlite3.connect('users.db') as connect:
+            connect.row_factory = dict_factory
+            cursor = connect.cursor()
+            cursor.execute("SELECT * FROM products")
+            users = cursor.fetchall()
+    except Exception as e:
+        connect.rollback()
+        print("There was an error fetching results from the database: " + str(e))
+    finally:
+        connect.close()
+    return jsonify(users)
 
 
 if __name__ == '__main__':
