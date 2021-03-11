@@ -35,19 +35,20 @@ def dict_factory(cursor, row):
     return d
 
 
-@app.route('/')
-@app.route('/reg/', methods=['GET'])
-def register():
-    return render_template('register.html')
+# @app.route('/')
+# @app.route('/reg/', methods=['GET'])
+# def register():
+#     return render_template('register.html')
 
 
 # Function that adds all the users
 @app.route('/add_user/', methods=['POST'])
 def add_user():
     try:
-        name = request.form['name']
-        email = request.form['email']
-        password = request.form['password']
+        post_data = request.get_json()
+        name = post_data['name']
+        email = post_data['email']
+        password = post_data['password']
         with sqlite3.connect('users.db') as conn:
             cursor = conn.cursor()
             cursor.execute('INSERT INTO user(name, email, password) VALUES (?, ?, ?)', (name, email, password))
@@ -56,7 +57,7 @@ def add_user():
     except Exception as e:
         msg = "Error in insertion" + str(e)
     finally:
-         conn.close()
+        conn.close()
     return jsonify(msg=msg)
 
 
