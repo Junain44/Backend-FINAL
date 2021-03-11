@@ -12,7 +12,7 @@ def init_sqlite_db():
     conn.execute('CREATE TABLE IF NOT EXISTS user(name TEXT, email TEXT, password TEXT)')
     print("Table created successfully")
 
-    conn.execute('CREATE TABLE IF NOT EXISTS products(name TEXT, description TEXT, price TEXT, image TEXT)')
+    conn.execute('CREATE TABLE IF NOT EXISTS products(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, description TEXT, price TEXT, image TEXT)')
     print("Product table created successfully")
 
     cursor = conn.cursor()
